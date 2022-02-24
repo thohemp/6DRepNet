@@ -12,7 +12,6 @@ In this paper, we present a method for unconstrained end-to-end head pose estima
 ___
 ## <div align="center"> **Trained on 300W-LP, Test on AFLW2000 and BIWI** </div>
 
-|                        |  |<td colspan=4>AFLW2000     |  <td colspan=4>BIWI       |
 | --------------------- | -------------- | ------- | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
 |                        | Full Range |        Yaw        |  Pitch   |   Roll   |   MAE    |   Yaw    |  Pitch   |   Roll   |   MAE    |
 | HopeNet (<img src="https://render.githubusercontent.com/render/math?math=\alpha"> =2) |           N       |       6.47        |   6.56   |   5.44   |   6.16   |   5.17   |   6.98   |   3.39   |   5.18   |
