@@ -11,11 +11,11 @@
 In this paper, we present a method for unconstrained end-to-end head pose estimation. We address the problem of ambiguous rotation labels by introducing the rotation matrix formalism for our ground truth data and propose a continuous 6D rotation matrix representation for efficient and robust direct regression. This way, our method can learn the full rotation appearance which is contrary to previous approaches that restrict the pose prediction to a narrow-angle for satisfactory results. In addition, we propose a geodesic distance-based loss to penalize our network with respect to the <img src="https://render.githubusercontent.com/render/math?math=\textit{SO}(3)"> manifold geometry. Experiments on the public AFLW2000 and BIWI datasets demonstrate that our proposed method significantly outperforms other state-of-the-art methods by up to 20\%.
 ___
 
-|                        |                  <td colspan=4>AFWL2000                <td colspan=4>BIWI      |       
+|                        |  ||<td colspan=4>AFLW2000                  |  <td colspan=4>BIWI       |          |          |          |          |          |
 | --------------------- | -------------- | ------- | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
 |                        | Full Range |        Yaw        |  Pitch   |   Roll   |   MAE    |   Yaw    |  Pitch   |   Roll   |   MAE    |
-| HopeNet (\(\alpha=2\)) |           N       |       6.47        |   6.56   |   5.44   |   6.16   |   5.17   |   6.98   |   3.39   |   5.18   |
-| HopeNet (\(\alpha=1\)) |           N       |       6.92        |   6.64   |   5.67   |   6.41   |   4.81   |   6.61   |   3.27   |   4.90   |
+| HopeNet (<img src="https://render.githubusercontent.com/render/math?math=\alpha"> =2) |           N       |       6.47        |   6.56   |   5.44   |   6.16   |   5.17   |   6.98   |   3.39   |   5.18   |
+| HopeNet  (<img src="https://render.githubusercontent.com/render/math?math=\alpha"> =1)|           N       |       6.92        |   6.64   |   5.67   |   6.41   |   4.81   |   6.61   |   3.27   |   4.90   |
 | FSA-Net                |           N       |       4.50        |   6.08   |   4.64   |   5.07   |   4.27   |   4.96   |   2.76   |   4.00   |
 | HPE                    |           N       |       4.80        |   6.18   |   4.87   |   5.28   |   3.12   |   5.18   |   4.57   |   4.29   |
 | QuatNet                |          N        |       3.97        |   5.62   |   3.92   |   4.50   | **2.94** |   5.49   |   4.01   |   4.15   |
@@ -27,21 +27,22 @@ ___
 | **6DRepNet**               |         Y        |     **3.63**      | **4.91** | **3.37** | **3.97** |   3.24   |   4.48   |   2.68   | **3.47** |
 |                        |                  |                   |          |          |          |          |          |          |          | |
 
-<center>
+<div align="center">
 
 ## **BIWI 70/30**
 
 |                         |          |          |          |          |
 | :---------------------- | :------: | :------: | :------: | :------: |
 |                         |   Yaw    |  Pitch   |   Roll   |   MAE    |
-| HopeNet (\(\alpha =1\)) |   3.29   |   3.39   |   3.00   |   3.23   |
+| HopeNet (<img src="https://render.githubusercontent.com/render/math?math=\alpha"> =1) |   3.29   |   3.39   |   3.00   |   3.23   |
 | FSA-Net                 |   2.89   |   4.29   |   3.60   |   3.60   |
 | TriNet                  |   2.93   |   3.04   |   2.44   |   2.80   |
 | FDN                     |   3.00   |   3.98   |   2.88   |   3.29   |
 |                         |          |          |          |          |
 | **6DRepNet**                | **2.69** | **2.92** | **2.36** | **2.66** |
 |                         |          |          |          |          |
-</center>
+</div>
+
 ---
 
 # <div align="center"> **Quick Start**: </div>
