@@ -10,7 +10,7 @@
 ### <div align="center"> **Abstract**</div>
 In this paper, we present a method for unconstrained end-to-end head pose estimation. We address the problem of ambiguous rotation labels by introducing the rotation matrix formalism for our ground truth data and propose a continuous 6D rotation matrix representation for efficient and robust direct regression. This way, our method can learn the full rotation appearance which is contrary to previous approaches that restrict the pose prediction to a narrow-angle for satisfactory results. In addition, we propose a geodesic distance-based loss to penalize our network with respect to the <img src="https://render.githubusercontent.com/render/math?math=\textit{SO}(3)"> manifold geometry. Experiments on the public AFLW2000 and BIWI datasets demonstrate that our proposed method significantly outperforms other state-of-the-art methods by up to 20\%.
 ___
-## <div align="center"> **Trained on 300W-LP, Test on AFLW2000 and BIWI** </div>
+## <div align="center"> **Trained on 300W-LP, Test on AFLW2000 and BIWI** 
 |                        |            ||             |          |          |          |          |          |          |
 | --------------------- | -------------- | ------- | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
 |                        | Full Range |        Yaw        |  Pitch   |   Roll   |   MAE    |   Yaw    |  Pitch   |   Roll   |   MAE    |
@@ -26,7 +26,7 @@ ___
 |                        |                  |                   |          |          |          |          |          |          |          |
 | **6DRepNet**               |         Y        |     **3.63**      | **4.91** | **3.37** | **3.97** |   3.24   |   4.48   |   2.68   | **3.47** |
 |                        |                  |                   |          |          |          |          |          |          |          | |
-
+</div>
 <div align="center">
 
 ## **BIWI 70/30**
