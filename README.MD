@@ -8,10 +8,10 @@
 ### PDF
 
 ### <div align="center"> **Abstract**</div>
-> In this paper, we present a method for unconstrained end-to-end head pose estimation. We address the problem of ambiguous rotation labels by introducing the rotation matrix formalism for our ground truth data and propose a continuous 6D rotation matrix representation for efficient and robust direct regression. This way, our method can learn the full rotation appearance which is contrary to previous approaches that restrict the pose prediction to a narrow-angle for satisfactory results. In addition, we propose a geodesic distance-based loss to penalize our network with respect to the <img src="https://render.githubusercontent.com/render/math?math=\textit{SO}(3)"> manifold geometry. Experiments on the public AFLW2000 and BIWI datasets demonstrate that our proposed method significantly outperforms other state-of-the-art methods by up to 20\%.
+In this paper, we present a method for unconstrained end-to-end head pose estimation. We address the problem of ambiguous rotation labels by introducing the rotation matrix formalism for our ground truth data and propose a continuous 6D rotation matrix representation for efficient and robust direct regression. This way, our method can learn the full rotation appearance which is contrary to previous approaches that restrict the pose prediction to a narrow-angle for satisfactory results. In addition, we propose a geodesic distance-based loss to penalize our network with respect to the <img src="https://render.githubusercontent.com/render/math?math=\textit{SO}(3)"> manifold geometry. Experiments on the public AFLW2000 and BIWI datasets demonstrate that our proposed method significantly outperforms other state-of-the-art methods by up to 20\%.
 ___
 
-<div align="center"> 
+<div align="left"> 
   
 ## **Trained on 300W-LP, Test on AFLW2000 and BIWI** 
 |                        |         |   ||             |          |          |          |          |          |          |
@@ -32,7 +32,7 @@ ___
 
 </div>
 
-<div align="center">
+<div align="left">
 
 ## **BIWI 70/30**
 
@@ -48,7 +48,7 @@ ___
 |                         |          |          |          |          |
 </div>
 
-# **Pre-trained Models**
+## **Pre-trained Models**
 
 Pre-trained models can be download from here: https://drive.google.com/drive/folders/1V1pCV0BEW3mD-B9MogGrz_P91UhTtuE_?usp=sharing
 
