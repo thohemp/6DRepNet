@@ -5,6 +5,7 @@
 </p>
 
 ## <div align="center"> **Paper**</div>
+Thorsten Hempel and Ahmed A. Abdelrahman and Ayoub Al-Hamadi, "6D Rotation Representation for Unconstrained Head Pose Estimation", *submitted to ICIP 2022*.
 ### PDF
 
 ### <div align="center"> **Abstract**</div>
