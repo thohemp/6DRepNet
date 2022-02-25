@@ -2,7 +2,7 @@ import argparse
 import os
 from model import SixDRepNet
 import torch
-from repvgg.repvgg import repvgg_model_convert
+from backbone.repvgg import repvgg_model_convert
 
 parser = argparse.ArgumentParser(description='SixDRepNet Conversion')
 parser.add_argument('load', metavar='LOAD', help='path to the weights file')
