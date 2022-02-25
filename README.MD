@@ -65,7 +65,7 @@ cd 6DRepNet
 ```sh
 python3 -m venv venv
 source venv/bin/activate
-pip install -r requirements.txt  #Install required packages
+pip install -r requirements.txt  # Install required packages
 ```
 In order to run the demo scripts you need to install the face detector
 
@@ -73,20 +73,18 @@ In order to run the demo scripts you need to install the face detector
 pip install git+https://github.com/elliottzheng/face-detection.git@master
 ```
 
-##  <div align="center"> **Camera Demo**:</div>
-Download weights here:
+##  **Camera Demo**:
 
 ```sh
-python demo.py  --snapshot 300W_LP_AFLW2000.tar
+python demo.py  --snapshot 6DRepNet_300W_LP_AFLW2000.tar \
                 --cam_id 0
-                --show_viz False
 ```
 
 
 ___
 
 # <div align="center"> **Test/Train 3DRepNet** </div>
-## <div align="center">  **Preparing datasets** </div>
+##  **Preparing datasets**
 Download datasets:
 
 * **300W-LP**, **AFLW2000** from [here](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/projects/3DDFA/main.htm).
@@ -103,31 +101,30 @@ The BIWI datasets needs be preprocessed by a face detector to cut our the faces 
 
 
 
-## <div align="center"> **Testing**: </div>
-
-### Run test:
+## **Testing**: 
 
 ```sh
-python test.py  --batch_size 64
-                --dataset ALFW2000 #BIWI, AFLW2000
-                --data_dir datasets/AFLW2000
-                --filename_list datasets/AFLW2000/files.txt
-                --snapshot output/snapshots/1.tar #Path to weight file 
+python test.py  --batch_size 64 \
+                --dataset ALFW2000 \
+                --data_dir datasets/AFLW2000 \
+                --filename_list datasets/AFLW2000/files.txt \
+                --snapshot output/snapshots/1.tar \
+                --show_viz False 
 ```
 
-## <div align="center">  **Training** </div>
+## **Training** 
 
 ```sh
-python train.py --batch_size 64
-                --num_epochs 30
-                --lr 0.00001
-                --dataset Pose_300W_LP
-                --data_dir datasets/300W_LP
+python train.py --batch_size 64 \
+                --num_epochs 30 \
+                --lr 0.00001 \
+                --dataset Pose_300W_LP \
+                --data_dir datasets/300W_LP \
                 --filename_list datasets/300W_LP/files.txt
 ```
 
-___
-## <div align="center"> **Deploy models** </div>
+
+##  **Deploy models**
 
 For reparameterization the trained models into inference-models use the convert script.
 
