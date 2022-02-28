@@ -1,3 +1,6 @@
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/6d-rotation-representation-for-unconstrained/head-pose-estimation-on-biwi)](https://paperswithcode.com/sota/head-pose-estimation-on-biwi?p=6d-rotation-representation-for-unconstrained)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/6d-rotation-representation-for-unconstrained/head-pose-estimation-on-aflw2000)](https://paperswithcode.com/sota/head-pose-estimation-on-aflw2000?p=6d-rotation-representation-for-unconstrained)
+
 # <div align="center"> **6D Rotation Representation for Unconstrained Head Pose Estimation (Pytorch)** </div>
 
 <p align="center">
