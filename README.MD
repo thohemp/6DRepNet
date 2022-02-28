@@ -100,7 +100,7 @@ For 300W-LP and AFLW2000 we need to create a *filenamelist*.
 ```
 python create_filename_list.py --root_dir datasets/300W_LP
 ```
-The BIWI datasets needs be preprocessed by a face detector to cut our the faces from the images. You can use the script provided [here](https://github.com/shamangary/FSA-Net/blob/master/data/TYY_create_db_biwi.py). For 7:3 splitting of the BIWI dataset you can use the equivilent script [here](https://github.com/shamangary/FSA-Net/blob/master/data/TYY_create_db_biwi_70_30.py). We set the cropped images size to *256*.
+The BIWI datasets needs be preprocessed by a face detector to cut out the faces from the images. You can use the script provided [here](https://github.com/shamangary/FSA-Net/blob/master/data/TYY_create_db_biwi.py). For 7:3 splitting of the BIWI dataset you can use the equivilent script [here](https://github.com/shamangary/FSA-Net/blob/master/data/TYY_create_db_biwi_70_30.py). We set the cropped image size to *256*.
 
 
 
