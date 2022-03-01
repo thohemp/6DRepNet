@@ -79,7 +79,7 @@ pip install git+https://github.com/elliottzheng/face-detection.git@master
 ##  **Camera Demo**:
 
 ```sh
-python demo.py  --snapshot 6DRepNet_300W_LP_AFLW2000.tar \
+python demo.py  --snapshot 6DRepNet_300W_LP_AFLW2000.pth \
                 --cam_id 0
 ```
 
@@ -111,7 +111,7 @@ python test.py  --batch_size 64 \
                 --dataset ALFW2000 \
                 --data_dir datasets/AFLW2000 \
                 --filename_list datasets/AFLW2000/files.txt \
-                --snapshot output/snapshots/1.tar \
+                --snapshot output/snapshots/1.pth \
                 --show_viz False 
 ```
 
