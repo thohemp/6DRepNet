@@ -80,7 +80,7 @@ pip install git+https://github.com/elliottzheng/face-detection.git@master
 
 ```sh
 python demo.py  --snapshot 6DRepNet_300W_LP_AFLW2000.pth \
-                --cam_id 0
+                --cam 0
 ```
 
 
