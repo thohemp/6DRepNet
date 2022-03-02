@@ -143,3 +143,18 @@ model = SixDRepNet(backbone_name='RepVGG-B1g2',
                     deploy=True,
                     pretrained=False)
 ```
+
+## **Citing**
+
+If you find our work useful, please cite the paper:
+
+```
+@misc{hempel20226d,
+      title={6D Rotation Representation For Unconstrained Head Pose Estimation}, 
+      author={Thorsten Hempel and Ahmed A. Abdelrahman and Ayoub Al-Hamadi},
+      year={2022},
+      eprint={2202.12555},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
