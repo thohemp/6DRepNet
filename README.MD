@@ -52,7 +52,7 @@ ___
 |                         |          |          |          |          |
 </div>
 
-## **Pre-trained Models**
+## **Fine-tuned Models**
 
 Pre-trained models can be download from here: https://drive.google.com/drive/folders/1V1pCV0BEW3mD-B9MogGrz_P91UhTtuE_?usp=sharing
 
@@ -116,6 +116,8 @@ python test.py  --batch_size 64 \
 ```
 
 ## **Training** 
+
+Download pre-trained RepVGG model '**RepVGG-B1g2-train.pth**' from [here](https://drive.google.com/drive/folders/1Avome4KvNp0Lqh2QwhXO6L5URQjzCjUq) and save it in the root directory.
 
 ```sh
 python train.py --batch_size 64 \
