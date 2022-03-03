@@ -54,7 +54,7 @@ ___
 
 ## **Fine-tuned Models**
 
-Pre-trained models can be download from here: https://drive.google.com/drive/folders/1V1pCV0BEW3mD-B9MogGrz_P91UhTtuE_?usp=sharing
+Fine-trained models can be download from here: https://drive.google.com/drive/folders/1V1pCV0BEW3mD-B9MogGrz_P91UhTtuE_?usp=sharing
 
 
 
