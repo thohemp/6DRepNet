@@ -8,7 +8,7 @@
 </p>
 
 ## <div align="center"> **Paper**</div>
-> Thorsten Hempel and Ahmed A. Abdelrahman and Ayoub Al-Hamadi, "6D Rotation Representation for Unconstrained Head Pose Estimation", *submitted to ICIP 2022*. [[Arxiv]](https://arxiv.org/abs/2202.12555)
+> Thorsten Hempel and Ahmed A. Abdelrahman and Ayoub Al-Hamadi, "6D Rotation Representation for Unconstrained Head Pose Estimation", *submitted to ICIP 2022*. [[ResearchGate]](https://www.researchgate.net/publication/358898627_6D_Rotation_Representation_For_Unconstrained_Head_Pose_Estimation)[[Arxiv]](https://arxiv.org/abs/2202.12555)
 
 
 ### <div align="center"> **Abstract**</div>
