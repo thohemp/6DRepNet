@@ -27,7 +27,7 @@ matplotlib.use('TkAgg')
 def parse_args():
     """Parse input arguments."""
     parser = argparse.ArgumentParser(
-        description='Head pose estimation using the Hopenet network.')
+        description='Head pose estimation using the 6DRepNet.')
     parser.add_argument('--gpu',
                         dest='gpu_id', help='GPU device id to use [0]',
                         default=0, type=int)
