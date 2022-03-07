@@ -59,7 +59,7 @@ if __name__ == '__main__':
                         deploy=True,
                         pretrained=False)
 
-    print('Loading data.')
+ 
 
     detector = RetinaFace(gpu_id=gpu) 
 
