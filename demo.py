@@ -47,6 +47,10 @@ def parse_args():
     args = parser.parse_args()
     return args
 
+transformations = transforms.Compose([transforms.Resize(256),
+                                          transforms.CenterCrop(
+                                              224), transforms.ToTensor(),
+                                          transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])])
 
 if __name__ == '__main__':
     args = parse_args()
@@ -109,11 +113,14 @@ if __name__ == '__main__':
                 img = frame[y_min:y_max,x_min:x_max]
                # cv2.imshow("crop", img)
                # cv2.waitKey(5)
-                img = cv2.resize(img, (244, 244))/255.0
-                img = img.transpose(2, 0, 1)
-                img = torch.from_numpy(img).type(torch.FloatTensor)
-                img = torch.Tensor(img).cuda(gpu)
-                img=img.unsqueeze(0)            
+                img = Image.fromarray(img)
+                img = img.convert('RGB')
+                img = transformations(img)
+
+               # img = img.transpose(2, 0, 1)
+               # img = torch.from_numpy(img).type(torch.FloatTensor)
+                img = torch.Tensor(img[None,:]).cuda(gpu)
+               # img=img.unsqueeze(0)            
 
                 c = cv2.waitKey(1)
                 if c == 27:
