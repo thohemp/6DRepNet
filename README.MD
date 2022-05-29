@@ -8,6 +8,12 @@
   <img src="https://github.com/thohemp/archive/blob/main/6DRepNet2.gif" alt="animated" />
 </p>
 
+## Updates
+
+### 29.05.2022
+* Simplified training script
+* Updated default training configuration for more robust results
+
 ## <div align="center"> **Paper**</div>
 > Thorsten Hempel and Ahmed A. Abdelrahman and Ayoub Al-Hamadi, "6D Rotation Representation for Unconstrained Head Pose Estimation", *submitted to ICIP 2022*. [[ResearchGate]](https://www.researchgate.net/publication/358898627_6D_Rotation_Representation_For_Unconstrained_Head_Pose_Estimation)[[Arxiv]](https://arxiv.org/abs/2202.12555)
 
@@ -121,12 +127,7 @@ python test.py  --batch_size 64 \
 Download pre-trained RepVGG model '**RepVGG-B1g2-train.pth**' from [here](https://drive.google.com/drive/folders/1Avome4KvNp0Lqh2QwhXO6L5URQjzCjUq) and save it in the root directory.
 
 ```sh
-python train.py --batch_size 64 \
-                --num_epochs 30 \
-                --lr 0.00001 \
-                --dataset Pose_300W_LP \
-                --data_dir datasets/300W_LP \
-                --filename_list datasets/300W_LP/files.txt
+python train.py 
 ```
 
 
