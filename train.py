@@ -27,19 +27,20 @@ def parse_args():
     parser.add_argument(
         '--num_epochs', dest='num_epochs',
         help='Maximum number of training epochs.',
-        default=30, type=int)
+        default=80, type=int)
     parser.add_argument(
         '--batch_size', dest='batch_size', help='Batch size.',
-        default=64, type=int)
+        default=80, type=int)
     parser.add_argument(
         '--lr', dest='lr', help='Base learning rate.',
-        default=0.00001, type=float)
+        default=0.0001, type=float)
+    parser.add_argument('--scheduler', default=False, type=lambda x: (str(x).lower() == 'true'))
     parser.add_argument(
         '--dataset', dest='dataset', help='Dataset type.',
         default='Pose_300W_LP', type=str) #Pose_300W_LP
     parser.add_argument(
         '--data_dir', dest='data_dir', help='Directory path for data.',
-        default='/datasets/300W_LP', type=str)#BIWI_70_30_train.npz
+        default='datasets/300W_LP', type=str)#BIWI_70_30_train.npz
     parser.add_argument(
         '--filename_list', dest='filename_list',
         help='Path to text file containing relative paths for every example.',
@@ -53,36 +54,6 @@ def parse_args():
 
     args = parser.parse_args()
     return args
-
-
-def get_ignored_params(model):
-    b = [model.layer0]
-    #b = [model.conv1, model.bn1, model.fc_finetune]
-    for i in range(len(b)):
-        for module_name, module in b[i].named_modules():
-            if 'bn' in module_name:
-                module.eval()
-            for name, param in module.named_parameters():
-                yield param
-
-
-def get_non_ignored_params(model):
-    b = [model.layer1, model.layer2, model.layer3, model.layer4]
-    for i in range(len(b)):
-        for module_name, module in b[i].named_modules():
-            if 'bn' in module_name:
-                module.eval()
-            for name, param in module.named_parameters():
-                yield param
-
-
-def get_fc_params(model):
-    b = [model.linear_reg]
-    for i in range(len(b)):
-        for module_name, module in b[i].named_modules():
-            for name, param in module.named_parameters():
-                yield param
-
 
 def load_filtered_state_dict(model, snapshot):
     # By user apaszke from discuss.pytorch.org
@@ -99,6 +70,7 @@ if __name__ == '__main__':
     num_epochs = args.num_epochs
     batch_size = args.batch_size
     gpu = args.gpu_id
+    b_scheduler = args.scheduler
 
     if not os.path.exists('output/snapshots'):
         os.makedirs('output/snapshots')
@@ -113,6 +85,7 @@ if __name__ == '__main__':
                         backbone_file='RepVGG-B1g2-train.pth',
                         deploy=False,
                         pretrained=True)
+ 
     if not args.snapshot == '':
         saved_state_dict = torch.load(args.snapshot)
         model.load_state_dict(saved_state_dict['model_state_dict'])
@@ -123,8 +96,7 @@ if __name__ == '__main__':
         mean=[0.485, 0.456, 0.406],
         std=[0.229, 0.224, 0.225])
 
-    transformations = transforms.Compose([transforms.Resize(240),
-                                          transforms.RandomCrop(224),
+    transformations = transforms.Compose([transforms.RandomResizedCrop(size=224,scale=(0.8,1)),
                                           transforms.ToTensor(),
                                           normalize])
 
@@ -138,13 +110,9 @@ if __name__ == '__main__':
         num_workers=4)
 
     model.cuda(gpu)
-    crit =  GeodesicLoss().cuda(gpu) #torch.nn.MSELoss().cuda(gpu)
+    crit = GeodesicLoss().cuda(gpu) #torch.nn.MSELoss().cuda(gpu)
+    optimizer = torch.optim.Adam(model.parameters(), args.lr)
 
-    optimizer = torch.optim.Adam([
-        {'params': get_ignored_params(model), 'lr': 0},
-        {'params': get_non_ignored_params(model), 'lr': args.lr},
-        {'params': get_fc_params(model), 'lr': args.lr * 10}
-    ], lr=args.lr)
 
     if not args.snapshot == '':
         optimizer.load_state_dict(saved_state_dict['optimizer_state_dict'])
@@ -184,8 +152,9 @@ if __name__ == '__main__':
                           loss.item(),
                       )
                       )
-
-        scheduler.step()
+        
+        if b_scheduler:
+            scheduler.step()
 
         # Save models at numbered epochs.
         if epoch % 1 == 0 and epoch < num_epochs:
