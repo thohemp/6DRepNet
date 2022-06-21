@@ -23,9 +23,9 @@
 > In this paper, we present a method for unconstrained end-to-end head pose estimation. We address the problem of ambiguous rotation labels by introducing the rotation matrix formalism for our ground truth data and propose a continuous 6D rotation matrix representation for efficient and robust direct regression. This way, our method can learn the full rotation appearance which is contrary to previous approaches that restrict the pose prediction to a narrow-angle for satisfactory results. In addition, we propose a geodesic distance-based loss to penalize our network with respect to the <img src="https://render.githubusercontent.com/render/math?math=\textit{SO}(3)"> manifold geometry. Experiments on the public AFLW2000 and BIWI datasets demonstrate that our proposed method significantly outperforms other state-of-the-art methods by up to 20\%.
 ___
 
-<div align="left"> 
-  
-## **Trained on 300W-LP, Test on AFLW2000 and BIWI** 
+<div align="left">
+
+## **Trained on 300W-LP, Test on AFLW2000 and BIWI**
 |                        |         |   ||             |          |          |          |          |          |          |
 | --------------------- | -------------- |--- | ------- | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
 |                        | **Full Range** |        **Yaw**        |  **Pitch**   |   **Roll**   |   **MAE**    | |  **Yaw**    |  **Pitch**   |   **Roll**   |   **MAE**    |
@@ -100,11 +100,11 @@ Download datasets:
 
 * **300W-LP**, **AFLW2000** from [here](http://www.cbsr.ia.ac.cn/users/xiangyuzhu/projects/3DDFA/main.htm).
 
-* **BIWI** (Biwi Kinect Head Pose Database) from [here](https://icu.ee.ethz.ch/research/datsets.html) 
+* **BIWI** (Biwi Kinect Head Pose Database) from [here](https://icu.ee.ethz.ch/research/datsets.html)
 
 Store them in the *datasets* directory.
 
-For 300W-LP and AFLW2000 we need to create a *filenamelist*. 
+For 300W-LP and AFLW2000 we need to create a *filenamelist*.
 ```
 python create_filename_list.py --root_dir datasets/300W_LP
 ```
@@ -112,23 +112,23 @@ The BIWI datasets needs be preprocessed by a face detector to cut out the faces 
 
 
 
-## **Testing**: 
+## **Testing**:
 
 ```sh
 python test.py  --batch_size 64 \
-                --dataset ALFW2000 \
+                --dataset AFLW2000 \
                 --data_dir datasets/AFLW2000 \
                 --filename_list datasets/AFLW2000/files.txt \
                 --snapshot output/snapshots/1.pth \
-                --show_viz False 
+                --show_viz False
 ```
 
-## **Training** 
+## **Training**
 
 Download pre-trained RepVGG model '**RepVGG-B1g2-train.pth**' from [here](https://drive.google.com/drive/folders/1Avome4KvNp0Lqh2QwhXO6L5URQjzCjUq) and save it in the root directory.
 
 ```sh
-python train.py 
+python train.py
 ```
 
 
@@ -155,7 +155,7 @@ If you find our work useful, please cite the paper:
 
 ```
 @misc{hempel20226d,
-      title={6D Rotation Representation For Unconstrained Head Pose Estimation}, 
+      title={6D Rotation Representation For Unconstrained Head Pose Estimation},
       author={Thorsten Hempel and Ahmed A. Abdelrahman and Ayoub Al-Hamadi},
       year={2022},
       eprint={2202.12555},
