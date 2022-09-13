@@ -20,7 +20,7 @@ setup(
     name='SixDRepNet',
     version=get_version("SixDRepNet/__init__.py"),    
     description='Efficient and accurate image-based head pose estimation',
-    long_description="".join(open("README.md", "r").readlines()),
+    long_description="".join(open("README.MD", "r").readlines()),
     long_description_content_type="text/markdown",
     url='https://github.com/thohemp/6DRepNet',
     author='Thorsten Hempel',
