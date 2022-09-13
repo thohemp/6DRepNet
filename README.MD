@@ -10,8 +10,7 @@
 
 ## Updates
 ### 13.09.2022
-* 6DRepNet is now avaiable as pip package for even more accessable usage: 
-* *sh pip3 install SixDRepNet*
+* 6DRepNet is now avaiable as pip package for even more accessable usage: *pip3 install SixDRepNet*
 
 ### 20.06.2022
 * 6DRepNet has been accepted to ICIP 2022.
