@@ -9,12 +9,12 @@ import torch
 from torchvision import transforms
 import torch.backends.cudnn as cudnn
 
-from model import SixDRepNet, SixDRepNet2
-import datasets
-from loss import GeodesicLoss
-
 import torch.utils.model_zoo as model_zoo
 import torchvision
+
+from SixDRepNet.model import SixDRepNet, SixDRepNet2
+from SixDRepNet.datasets import datasets
+from SixDRepNet.loss import GeodesicLoss
 
 
 def parse_args():

@@ -3,16 +3,17 @@ from torch import nn
 import torch.nn.functional as F
 import math
 from backbone.repvgg import get_RepVGG_func_by_name
-import utils
+import SixDRepNet.utils as utils
 
 class SixDRepNet(nn.Module):
     def __init__(self,
                  backbone_name, backbone_file, deploy,
                  bins=(1, 2, 3, 6),
                  droBatchNorm=nn.BatchNorm2d,
-                 pretrained=True):
+                 pretrained=True, 
+                 gpu_id=0):
         super(SixDRepNet, self).__init__()
-
+        self.gpu_id = gpu_id
         repvgg_fn = get_RepVGG_func_by_name(backbone_name)
         backbone = repvgg_fn(deploy)
         if pretrained:
@@ -45,7 +46,11 @@ class SixDRepNet(nn.Module):
         x= self.gap(x)
         x = torch.flatten(x, 1)
         x = self.linear_reg(x)
-        return utils.compute_rotation_matrix_from_ortho6d(x)
+        if self.gpu_id ==-1:
+            return utils.compute_rotation_matrix_from_ortho6d(x, False, self.gpu_id)
+        else:
+            return utils.compute_rotation_matrix_from_ortho6d(x, True, self.gpu_id)
+
 
 
 

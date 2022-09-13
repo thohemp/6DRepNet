@@ -9,6 +9,10 @@
 </p>
 
 ## Updates
+### 13.09.2022
+* 6DRepNet is now avaiable as pip package for even more accessable usage: 
+* *sh pip3 install SixDRepNet*
+
 ### 20.06.2022
 * 6DRepNet has been accepted to ICIP 2022.
 ### 29.05.2022
@@ -67,6 +71,38 @@ Fine-tuned models can be download from here: https://drive.google.com/drive/fold
 
 
 # <div align="center"> **Quick Start**: </div>
+## Pip install:
+
+```sh
+pip3 install SixDRepNet
+```
+Example usage:
+```py
+# Import SixDRepNet
+from SixDRepNet import SixDRepNet
+
+import cv2
+import numpy as np
+from math import cos, sin
+
+
+# Create model
+# Weights are automatically downloaded
+model = SixDRepNet()
+
+img = cv2.imread('/path/to/image.jpg')
+
+pitch, yaw, roll = model.predict(img)
+
+model.draw_axis(img, yaw, pitch, roll)
+
+cv2.imshow("test_window", img)
+cv2.waitKey(0)
+
+```
+
+## Setting it up your own:
+
 
 ```sh
 git clone https://github.com/thohemp/6DRepNet

@@ -3,7 +3,7 @@
 
 import os, sys, argparse
 import numpy as np
-import utils
+import SixDRepNet.utils
 
 def parse_args():
     """Parse input arguments."""

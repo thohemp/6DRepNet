@@ -1,5 +1,5 @@
 from face_detection import RetinaFace
-from model import SixDRepNet
+from SixDRepNet.model import SixDRepNet
 import math
 import re
 from matplotlib import pyplot as plt
@@ -19,7 +19,7 @@ from torchvision import transforms
 import torch.backends.cudnn as cudnn
 import torchvision
 import torch.nn.functional as F
-import utils
+import SixDRepNet.utils
 import matplotlib
 from PIL import Image
 import time

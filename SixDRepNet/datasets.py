@@ -8,7 +8,7 @@ from torch.utils.data.dataset import Dataset
 from torchvision import transforms
 
 from PIL import Image, ImageFilter
-import utils
+from SixDRepNet.utils import utils
 
 
 
