@@ -7,6 +7,7 @@
 <p align="center">
   <img src="https://github.com/thohemp/archive/blob/main/6DRepNet2.gif" alt="animated" />
 </p>
+
 ## **Citing**
 
 If you find our work useful, please cite the paper:
