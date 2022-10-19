@@ -7,7 +7,21 @@
 <p align="center">
   <img src="https://github.com/thohemp/archive/blob/main/6DRepNet2.gif" alt="animated" />
 </p>
+## **Citing**
 
+If you find our work useful, please cite the paper:
+
+```BibTeX
+@INPROCEEDINGS{9897219,
+  author={Hempel, Thorsten and Abdelrahman, Ahmed A. and Al-Hamadi, Ayoub},
+  booktitle={2022 IEEE International Conference on Image Processing (ICIP)}, 
+  title={6d Rotation Representation For Unconstrained Head Pose Estimation}, 
+  year={2022},
+  volume={},
+  number={},
+  pages={2496-2500},
+  doi={10.1109/ICIP46576.2022.9897219}}
+```
 ## Updates
 ### 13.09.2022
 * 6DRepNet is now avaiable as pip package for even more accessable usage: *pip3 install SixDRepNet*
@@ -181,17 +195,4 @@ model = SixDRepNet(backbone_name='RepVGG-B1g2',
                     pretrained=False)
 ```
 
-## **Citing**
 
-If you find our work useful, please cite the paper:
-
-```BibTeX
-@article{hempel20226d,
-      title={6D Rotation Representation For Unconstrained Head Pose Estimation},
-      author={Thorsten Hempel and Ahmed A. Abdelrahman and Ayoub Al-Hamadi},
-      year={2022},
-      eprint={2202.12555},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
-}
-```
