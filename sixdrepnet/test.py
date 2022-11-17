@@ -1,27 +1,29 @@
-from SixDRepNet.model import SixDRepNet
+import time
 import math
 import re
-from matplotlib import pyplot as plt
 import sys
 import os
 import argparse
 
 import numpy as np
-import cv2
-import matplotlib.pyplot as plt
 from numpy.lib.function_base import _quantile_unchecked
-
+import cv2
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
-from torchvision import transforms
-import torch.backends.cudnn as cudnn
-import torchvision
+from torch.backends import cudnn
 import torch.nn.functional as F
-from SixDRepNet.datasets import datasets
-from SixDRepNet.utils import utils
+import torchvision
+from torchvision import transforms
+from face_detection import RetinaFace
 import matplotlib
+from matplotlib import pyplot as plt
+from PIL import Image
 matplotlib.use('TkAgg')
+
+from sixdrepnet.model import SixDRepNet
+from sixdrepnet import utils
+from sixdrepnet import datasets
 
 
 def parse_args():

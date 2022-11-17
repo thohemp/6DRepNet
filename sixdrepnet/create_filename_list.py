@@ -1,9 +1,14 @@
 ## Amir Shahroudy  
 # https://github.com/shahroudy
 
-import os, sys, argparse
+import os
+import sys
+import argparse
+
 import numpy as np
-import SixDRepNet.utils
+
+from sixdrepnet import utils
+
 
 def parse_args():
     """Parse input arguments."""
@@ -23,6 +28,7 @@ def parse_args():
     args = parser.parse_args()
 
     return args
+
 
 if __name__ == '__main__':
     args = parse_args()

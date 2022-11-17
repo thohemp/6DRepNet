@@ -1,9 +1,11 @@
+import math
+
 import torch
 from torch import nn
 import torch.nn.functional as F
-import math
+
 from backbone.repvgg import get_RepVGG_func_by_name
-import SixDRepNet.utils as utils
+from sixdrepnet import utils
 
 class SixDRepNet(nn.Module):
     def __init__(self,

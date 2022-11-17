@@ -1,13 +1,15 @@
+from math import cos, sin
 
-from SixDRepNet.model import SixDRepNet
-import SixDRepNet.utils as utils
 import torch
 from torch.hub import load_state_dict_from_url
-import cv2
 from torchvision import transforms
+import cv2
 from PIL import Image
 import numpy as np
-from math import cos, sin
+
+from sixdrepnet.model import SixDRepNet
+import sixdrepnet.utils as utils
+
 
 class SixDRepNet_Detector():
 

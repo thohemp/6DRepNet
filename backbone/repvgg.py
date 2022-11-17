@@ -1,8 +1,9 @@
+import copy
 
 import torch.nn as nn
 import numpy as np
 import torch
-import copy
+
 from backbone.se_block import SEBlock
 
 def conv_bn(in_channels, out_channels, kernel_size, stride, padding, groups=1):

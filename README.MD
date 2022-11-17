@@ -88,7 +88,7 @@ Fine-tuned models can be download from here: https://drive.google.com/drive/fold
 ## Pip install:
 
 ```sh
-pip3 install SixDRepNet
+pip3 install sixdrepnet
 ```
 Example usage:
 ```py

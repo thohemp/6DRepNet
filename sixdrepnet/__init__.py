@@ -1,4 +1,4 @@
-from SixDRepNet.regressor import SixDRepNet_Detector as SixDRepNet
+from sixdrepnet.regressor import SixDRepNet_Detector as SixDRepNet
 
 
 """
