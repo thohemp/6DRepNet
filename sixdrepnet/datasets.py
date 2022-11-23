@@ -1,14 +1,14 @@
 import os
+
 import numpy as np
 import cv2
 import pandas as pd
-
+from PIL import Image, ImageFilter
 import torch
 from torch.utils.data.dataset import Dataset
 from torchvision import transforms
 
-from PIL import Image, ImageFilter
-from SixDRepNet.utils import utils
+from sixdrepnet import utils
 
 
 

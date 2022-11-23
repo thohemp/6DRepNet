@@ -17,8 +17,8 @@ def get_version(rel_path):
         raise RuntimeError("Unable to find version string.")
 
 setup(
-    name='SixDRepNet',
-    version=get_version("SixDRepNet/__init__.py"),    
+    name='sixdrepnet',
+    version=get_version("sixdrepnet/__init__.py"),
     description='Efficient and accurate image-based head pose estimation',
     long_description="".join(open("README.MD", "r").readlines()),
     long_description_content_type="text/markdown",

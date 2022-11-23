@@ -1,11 +1,13 @@
+import os
+import math
+from math import cos, sin
+
 import numpy as np
 import torch
 #from torch.utils.serialization import load_lua
-import os
 import scipy.io as sio
 import cv2
-import math
-from math import cos, sin
+
 
 def plot_pose_cube(img, yaw, pitch, roll, tdx=None, tdy=None, size=150.):
     # Input is a cv2 image
@@ -50,6 +52,7 @@ def plot_pose_cube(img, yaw, pitch, roll, tdx=None, tdy=None, size=150.):
     cv2.line(img, (int(x3), int(y3)), (int(x3+x2-face_x),int(y3+y2-face_y)),(0,255,0),2)
 
     return img
+
 
 def draw_axis(img, yaw, pitch, roll, tdx=None, tdy=None, size = 100):
 
