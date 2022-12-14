@@ -16,16 +16,15 @@ from torch.backends import cudnn
 from torch.utils import model_zoo
 import torchvision
 from torchvision import transforms
-from face_detection import RetinaFace
 import matplotlib
 from matplotlib import pyplot as plt
 from PIL import Image
 matplotlib.use('TkAgg')
 
-from sixdrepnet.model import SixDRepNet, SixDRepNet2
-from sixdrepnet import utils
-from sixdrepnet import datasets
-from sixdrepnet.loss import GeodesicLoss
+from model import SixDRepNet, SixDRepNet2
+import utils
+import datasets
+from loss import GeodesicLoss
 
 
 def parse_args():

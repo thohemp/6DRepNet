@@ -15,15 +15,14 @@ from torch.backends import cudnn
 import torch.nn.functional as F
 import torchvision
 from torchvision import transforms
-from face_detection import RetinaFace
 import matplotlib
 from matplotlib import pyplot as plt
 from PIL import Image
 matplotlib.use('TkAgg')
 
-from sixdrepnet.model import SixDRepNet
-from sixdrepnet import utils
-from sixdrepnet import datasets
+from model import SixDRepNet
+import utils
+import datasets
 
 
 def parse_args():

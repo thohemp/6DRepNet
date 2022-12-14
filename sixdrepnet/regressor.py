@@ -7,8 +7,8 @@ import cv2
 from PIL import Image
 import numpy as np
 
-from sixdrepnet.model import SixDRepNet
-import sixdrepnet.utils as utils
+from model import SixDRepNet
+import utils
 
 
 class SixDRepNet_Detector():

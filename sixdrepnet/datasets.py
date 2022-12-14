@@ -8,7 +8,7 @@ import torch
 from torch.utils.data.dataset import Dataset
 from torchvision import transforms
 
-from sixdrepnet import utils
+import utils
 
 
 

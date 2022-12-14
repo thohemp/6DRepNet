@@ -1,5 +1,5 @@
 # Import SixDRepNet
-from sixdrepnet import SixDRepNet
+from SixDRepNet import SixDRepNet
 import cv2
 
 # Create model
