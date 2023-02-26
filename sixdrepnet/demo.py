@@ -5,6 +5,8 @@ import sys
 import os
 import argparse
 
+os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
+
 import numpy as np
 from numpy.lib.function_base import _quantile_unchecked
 import cv2
@@ -29,7 +31,7 @@ def parse_args():
     parser = argparse.ArgumentParser(
         description='Head pose estimation using the 6DRepNet.')
     parser.add_argument('--gpu',
-                        dest='gpu_id', help='GPU device id to use [0]',
+                        dest='gpu_id', help='GPU device id to use [0], set -1 to use CPU',
                         default=0, type=int)
     parser.add_argument('--cam',
                         dest='cam_id', help='Camera device id to use [0]',
@@ -54,10 +56,15 @@ if __name__ == '__main__':
     args = parse_args()
     cudnn.enabled = True
     gpu = args.gpu_id
+    if (gpu < 0):
+        device = torch.device('cpu')
+    else:
+        device = torch.device('cuda:%d' % gpu)
     cam = args.cam_id
     snapshot_path = args.snapshot
     model = SixDRepNet(backbone_name='RepVGG-B1g2',
                        backbone_file='',
+                       device=device,
                        deploy=True,
                        pretrained=False)
 
@@ -73,7 +80,7 @@ if __name__ == '__main__':
         model.load_state_dict(saved_state_dict['model_state_dict'])
     else:
         model.load_state_dict(saved_state_dict)
-    model.cuda(gpu)
+    model.to(device)
 
     # Test the Model
     model.eval()  # Change model to 'eval' mode (BN uses moving mean/var).
@@ -112,7 +119,7 @@ if __name__ == '__main__':
                 img = img.convert('RGB')
                 img = transformations(img)
 
-                img = torch.Tensor(img[None, :]).cuda(gpu)
+                img = torch.Tensor(img[None, :]).to(device)
 
                 c = cv2.waitKey(1)
                 if c == 27:
@@ -124,7 +131,7 @@ if __name__ == '__main__':
                 print('Head pose estimation: %2f ms' % ((end - start)*1000.))
 
                 euler = utils.compute_euler_angles_from_rotation_matrices(
-                    R_pred)*180/np.pi
+                    R_pred, device=device)*180/np.pi
                 p_pred_deg = euler[:, 0].cpu()
                 y_pred_deg = euler[:, 1].cpu()
                 r_pred_deg = euler[:, 2].cpu()

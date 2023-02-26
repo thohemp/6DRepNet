@@ -8,13 +8,12 @@ import utils
 
 class SixDRepNet(nn.Module):
     def __init__(self,
-                 backbone_name, backbone_file, deploy,
+                 backbone_name, backbone_file, device, deploy,
                  bins=(1, 2, 3, 6),
                  droBatchNorm=nn.BatchNorm2d,
-                 pretrained=True, 
-                 gpu_id=0):
+                 pretrained=True):
         super(SixDRepNet, self).__init__()
-        self.gpu_id = gpu_id
+        self.device = device
         repvgg_fn = get_RepVGG_func_by_name(backbone_name)
         backbone = repvgg_fn(deploy)
         if pretrained:
@@ -38,28 +37,22 @@ class SixDRepNet(nn.Module):
         self.linear_reg = nn.Linear(fea_dim, 6)
 
     def forward(self, x):
-
         x = self.layer0(x)
         x = self.layer1(x)
         x = self.layer2(x)
         x = self.layer3(x)
         x = self.layer4(x)
-        x= self.gap(x)
+        x = self.gap(x)
         x = torch.flatten(x, 1)
         x = self.linear_reg(x)
-        if self.gpu_id ==-1:
-            return utils.compute_rotation_matrix_from_ortho6d(x, False, self.gpu_id)
-        else:
-            return utils.compute_rotation_matrix_from_ortho6d(x, True, self.gpu_id)
-
-
-
+        return utils.compute_rotation_matrix_from_ortho6d(x, device=self.device)
 
 
 class SixDRepNet2(nn.Module):
-    def __init__(self, block, layers, fc_layers=1):
+    def __init__(self, block, layers, device, fc_layers=1):
         self.inplanes = 64
         super(SixDRepNet2, self).__init__()
+        self.device = device
         self.conv1 = nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3,
                                bias=False)
         self.bn1 = nn.BatchNorm2d(64)
@@ -118,6 +111,6 @@ class SixDRepNet2(nn.Module):
         x = x.view(x.size(0), -1)
 
         x = self.linear_reg(x)        
-        out = utils.compute_rotation_matrix_from_ortho6d(x)
+        out = utils.compute_rotation_matrix_from_ortho6d(x, device=self.device)
 
         return out

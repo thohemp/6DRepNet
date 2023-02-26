@@ -34,7 +34,6 @@ def plot_pose_cube(img, yaw, pitch, roll, tdx=None, tdy=None, size=150.):
     x3 = size * (sin(y)) + face_x
     y3 = size * (-cos(y) * sin(p)) + face_y
 
-
     # Draw base in red
     cv2.line(img, (int(face_x), int(face_y)), (int(x1),int(y1)),(0,0,255),3)
     cv2.line(img, (int(face_x), int(face_y)), (int(x2),int(y2)),(0,0,255),3)
@@ -115,19 +114,16 @@ def get_pt2d_from_mat(mat_path):
     return pt2d
 
 # batch*n
-def normalize_vector( v, use_gpu=True, gpu_id = 0):
-    batch=v.shape[0]
+def normalize_vector(v, device):
+    batch = v.shape[0]
     v_mag = torch.sqrt(v.pow(2).sum(1))# batch
-    if use_gpu:
-        v_mag = torch.max(v_mag, torch.autograd.Variable(torch.FloatTensor([1e-8]).cuda(gpu_id)))
-    else:
-        v_mag = torch.max(v_mag, torch.autograd.Variable(torch.FloatTensor([1e-8])))  
+    v_mag = torch.max(v_mag, torch.autograd.Variable(torch.FloatTensor([1e-8]))).to(device)
     v_mag = v_mag.view(batch,1).expand(batch,v.shape[1])
     v = v/v_mag
     return v
     
 # u, v batch*n
-def cross_product( u, v):
+def cross_product(u, v):
     batch = u.shape[0]
     #print (u.shape)
     #print (v.shape)
@@ -142,13 +138,13 @@ def cross_product( u, v):
     
 #poses batch*6
 #poses
-def compute_rotation_matrix_from_ortho6d(poses, use_gpu=True, gpu_id=0):
+def compute_rotation_matrix_from_ortho6d(poses, device):
     x_raw = poses[:,0:3]#batch*3
     y_raw = poses[:,3:6]#batch*3
 
-    x = normalize_vector(x_raw, use_gpu, gpu_id=gpu_id) #batch*3
+    x = normalize_vector(x_raw, device=device) #batch*3
     z = cross_product(x,y_raw) #batch*3
-    z = normalize_vector(z, use_gpu,gpu_id=gpu_id)#batch*3
+    z = normalize_vector(z, device=device)#batch*3
     y = cross_product(z,x)#batch*3
         
     x = x.view(-1,3,1)
@@ -161,28 +157,25 @@ def compute_rotation_matrix_from_ortho6d(poses, use_gpu=True, gpu_id=0):
 #input batch*4*4 or batch*3*3
 #output torch batch*3 x, y, z in radiant
 #the rotation is in the sequence of x,y,z
-def compute_euler_angles_from_rotation_matrices(rotation_matrices, use_gpu=True, gpu_id= 0):
-    batch=rotation_matrices.shape[0]
-    R=rotation_matrices
+def compute_euler_angles_from_rotation_matrices(rotation_matrices, device):
+    batch = rotation_matrices.shape[0]
+    R = rotation_matrices
     sy = torch.sqrt(R[:,0,0]*R[:,0,0]+R[:,1,0]*R[:,1,0])
-    singular= sy<1e-6
-    singular=singular.float()
+    singular = sy<1e-6
+    singular = singular.float()
         
-    x=torch.atan2(R[:,2,1], R[:,2,2])
-    y=torch.atan2(-R[:,2,0], sy)
-    z=torch.atan2(R[:,1,0],R[:,0,0])
+    x = torch.atan2(R[:,2,1], R[:,2,2])
+    y = torch.atan2(-R[:,2,0], sy)
+    z = torch.atan2(R[:,1,0],R[:,0,0])
     
-    xs=torch.atan2(-R[:,1,2], R[:,1,1])
-    ys=torch.atan2(-R[:,2,0], sy)
-    zs=R[:,1,0]*0
+    xs = torch.atan2(-R[:,1,2], R[:,1,1])
+    ys = torch.atan2(-R[:,2,0], sy)
+    zs = R[:,1,0]*0
         
-    if use_gpu:
-        out_euler=torch.autograd.Variable(torch.zeros(batch,3).cuda(gpu_id))
-    else:
-        out_euler=torch.autograd.Variable(torch.zeros(batch,3))  
-    out_euler[:,0]=x*(1-singular)+xs*singular
-    out_euler[:,1]=y*(1-singular)+ys*singular
-    out_euler[:,2]=z*(1-singular)+zs*singular
+    out_euler = torch.autograd.Variable(torch.zeros(batch,3)).to(device)
+    out_euler[:,0] = x*(1-singular)+xs*singular
+    out_euler[:,1] = y*(1-singular)+ys*singular
+    out_euler[:,2] = z*(1-singular)+zs*singular
         
     return out_euler
 
