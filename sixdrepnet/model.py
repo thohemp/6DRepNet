@@ -8,12 +8,11 @@ import utils
 
 class SixDRepNet(nn.Module):
     def __init__(self,
-                 backbone_name, backbone_file, device, deploy,
+                 backbone_name, backbone_file, deploy,
                  bins=(1, 2, 3, 6),
                  droBatchNorm=nn.BatchNorm2d,
                  pretrained=True):
         super(SixDRepNet, self).__init__()
-        self.device = device
         repvgg_fn = get_RepVGG_func_by_name(backbone_name)
         backbone = repvgg_fn(deploy)
         if pretrained:
@@ -45,14 +44,13 @@ class SixDRepNet(nn.Module):
         x = self.gap(x)
         x = torch.flatten(x, 1)
         x = self.linear_reg(x)
-        return utils.compute_rotation_matrix_from_ortho6d(x, device=self.device)
+        return utils.compute_rotation_matrix_from_ortho6d(x)
 
 
 class SixDRepNet2(nn.Module):
-    def __init__(self, block, layers, device, fc_layers=1):
+    def __init__(self, block, layers, fc_layers=1):
         self.inplanes = 64
         super(SixDRepNet2, self).__init__()
-        self.device = device
         self.conv1 = nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3,
                                bias=False)
         self.bn1 = nn.BatchNorm2d(64)
@@ -111,6 +109,6 @@ class SixDRepNet2(nn.Module):
         x = x.view(x.size(0), -1)
 
         x = self.linear_reg(x)        
-        out = utils.compute_rotation_matrix_from_ortho6d(x, device=self.device)
+        out = utils.compute_rotation_matrix_from_ortho6d(x)
 
         return out

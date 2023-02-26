@@ -64,7 +64,6 @@ if __name__ == '__main__':
     snapshot_path = args.snapshot
     model = SixDRepNet(backbone_name='RepVGG-B1g2',
                        backbone_file='',
-                       device=device,
                        deploy=True,
                        pretrained=False)
 
@@ -131,7 +130,7 @@ if __name__ == '__main__':
                 print('Head pose estimation: %2f ms' % ((end - start)*1000.))
 
                 euler = utils.compute_euler_angles_from_rotation_matrices(
-                    R_pred, device=device)*180/np.pi
+                    R_pred)*180/np.pi
                 p_pred_deg = euler[:, 0].cpu()
                 y_pred_deg = euler[:, 1].cpu()
                 r_pred_deg = euler[:, 2].cpu()
