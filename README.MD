@@ -134,8 +134,8 @@ pip install git+https://github.com/elliottzheng/face-detection.git@master
 ##  **Camera Demo**:
 
 ```sh
-python demo.py  --snapshot 6DRepNet_300W_LP_AFLW2000.pth \
-                --cam 0
+python ./sixdrepnet/demo.py  --snapshot 6DRepNet_300W_LP_AFLW2000.pth \
+                             --cam 0
 ```
 
 

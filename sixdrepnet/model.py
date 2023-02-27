@@ -11,10 +11,8 @@ class SixDRepNet(nn.Module):
                  backbone_name, backbone_file, deploy,
                  bins=(1, 2, 3, 6),
                  droBatchNorm=nn.BatchNorm2d,
-                 pretrained=True, 
-                 gpu_id=0):
+                 pretrained=True):
         super(SixDRepNet, self).__init__()
-        self.gpu_id = gpu_id
         repvgg_fn = get_RepVGG_func_by_name(backbone_name)
         backbone = repvgg_fn(deploy)
         if pretrained:
@@ -38,22 +36,15 @@ class SixDRepNet(nn.Module):
         self.linear_reg = nn.Linear(fea_dim, 6)
 
     def forward(self, x):
-
         x = self.layer0(x)
         x = self.layer1(x)
         x = self.layer2(x)
         x = self.layer3(x)
         x = self.layer4(x)
-        x= self.gap(x)
+        x = self.gap(x)
         x = torch.flatten(x, 1)
         x = self.linear_reg(x)
-        if self.gpu_id ==-1:
-            return utils.compute_rotation_matrix_from_ortho6d(x, False, self.gpu_id)
-        else:
-            return utils.compute_rotation_matrix_from_ortho6d(x, True, self.gpu_id)
-
-
-
+        return utils.compute_rotation_matrix_from_ortho6d(x)
 
 
 class SixDRepNet2(nn.Module):
