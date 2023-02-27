@@ -29,8 +29,7 @@ class SixDRepNet_Detector():
         self.model = SixDRepNet(backbone_name='RepVGG-B1g2',
                                 backbone_file='',
                                 deploy=True,
-                                pretrained=False,
-                                gpu_id=self.gpu)
+                                pretrained=False)
         # Load snapshot
         if dict_path=='':
             saved_state_dict = load_state_dict_from_url("https://cloud.ovgu.de/s/Q67RnLDy6JKLRWm/download/6DRepNet_300W_LP_AFLW2000.pth")    
@@ -73,10 +72,7 @@ class SixDRepNet_Detector():
      
         pred = self.model(img)
                 
-        if self.gpu != -1:
-            euler = utils.compute_euler_angles_from_rotation_matrices(pred)*180/np.pi
-        else:
-            euler = utils.compute_euler_angles_from_rotation_matrices(pred, False)*180/np.pi
+        euler = utils.compute_euler_angles_from_rotation_matrices(pred)*180/np.pi
         p = euler[:, 0].cpu().detach().numpy()
         y = euler[:, 1].cpu().detach().numpy()
         r = euler[:, 2].cpu().detach().numpy()

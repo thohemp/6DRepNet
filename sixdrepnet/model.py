@@ -9,8 +9,6 @@ import utils
 class SixDRepNet(nn.Module):
     def __init__(self,
                  backbone_name, backbone_file, deploy,
-                 bins=(1, 2, 3, 6),
-                 droBatchNorm=nn.BatchNorm2d,
                  pretrained=True):
         super(SixDRepNet, self).__init__()
         repvgg_fn = get_RepVGG_func_by_name(backbone_name)
