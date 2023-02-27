@@ -62,9 +62,9 @@ class SixDRepNet_Detector():
         -------
         pitch, yaw, roll
         """
-
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         img = Image.fromarray(img)
-        img = img.convert('RGB')
+        img.show()
         img = self.transformations(img)
 
         img = torch.Tensor(img[None, :])
