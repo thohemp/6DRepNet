@@ -64,7 +64,6 @@ class SixDRepNet_Detector():
         """
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         img = Image.fromarray(img)
-        img.show()
         img = self.transformations(img)
 
         img = torch.Tensor(img[None, :])
