@@ -7,7 +7,7 @@ import argparse
 
 import numpy as np
 
-import utils
+from sixdrepnet import utils
 
 
 def parse_args():

@@ -93,7 +93,7 @@ pip3 install sixdrepnet
 Example usage:
 ```py
 # Import SixDRepNet
-from SixDRepNet import SixDRepNet
+from sixdrepnet import SixDRepNet
 import cv2
 
 
@@ -175,7 +175,7 @@ python test.py  --batch_size 64 \
 Download pre-trained RepVGG model '**RepVGG-B1g2-train.pth**' from [here](https://drive.google.com/drive/folders/1Avome4KvNp0Lqh2QwhXO6L5URQjzCjUq) and save it in the root directory.
 
 ```sh
-python train.py
+python sixdrepnet/train.py
 ```
 
 

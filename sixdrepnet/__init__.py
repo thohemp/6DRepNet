@@ -7,5 +7,5 @@ from sixdrepnet.regressor import SixDRepNet_Detector as SixDRepNet
 Accurate and unconstrained head pose estimation.
 """
 
-__version__ = "0.1.3"
+__version__ = "0.1.5"
 __author__ = 'Thorsten Hempel'

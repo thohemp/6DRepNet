@@ -21,10 +21,9 @@ from matplotlib import pyplot as plt
 from PIL import Image
 matplotlib.use('TkAgg')
 
-from model import SixDRepNet, SixDRepNet2
-import utils
-import datasets
-from loss import GeodesicLoss
+from sixdrepnet.model import SixDRepNet, SixDRepNet2
+from sixdrepnet import datasets
+from sixdrepnet.loss import GeodesicLoss
 
 
 def parse_args():
