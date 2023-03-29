@@ -23,8 +23,8 @@ from matplotlib import pyplot as plt
 from PIL import Image
 matplotlib.use('TkAgg')
 
-from sixdrepnet.model import SixDRepNet
-from sixdrepnet import utils
+from model import SixDRepNet
+import utils
 
 def parse_args():
     """Parse input arguments."""

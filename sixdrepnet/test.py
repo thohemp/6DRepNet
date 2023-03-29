@@ -20,9 +20,9 @@ from matplotlib import pyplot as plt
 from PIL import Image
 matplotlib.use('TkAgg')
 
-from sixdrepnet.model import SixDRepNet
-from sixdrepnet import utils
-from sixdrepnet import datasets
+from model import SixDRepNet
+import utils
+import datasets
 
 
 def parse_args():
