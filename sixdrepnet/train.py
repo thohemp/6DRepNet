@@ -123,9 +123,6 @@ if __name__ == '__main__':
     optimizer = torch.optim.Adam(model.parameters(), args.lr)
 
 
-    if not args.snapshot == '':
-        optimizer.load_state_dict(saved_state_dict['optimizer_state_dict'])
-
     #milestones = np.arange(num_epochs)
     milestones = [10, 20]
     scheduler = torch.optim.lr_scheduler.MultiStepLR(
