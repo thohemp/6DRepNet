@@ -24,9 +24,10 @@ If you find our work useful, please cite the paper:
   doi={10.1109/ICIP46576.2022.9897219}}
 ```
 ## Updates
+### 18.09.2023
+* Checkout our new version of 6DRepNet tackling the prediction of the entire range of head pose orientations: https://github.com/thohemp/6DRepNet360
 ### 13.09.2022
 * 6DRepNet is now avaiable as pip package for even more accessable usage: *pip3 install SixDRepNet*
-
 ### 20.06.2022
 * 6DRepNet has been accepted to ICIP 2022.
 ### 29.05.2022
