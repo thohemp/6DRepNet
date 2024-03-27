@@ -135,7 +135,7 @@ cd 6DRepNet
 ```sh
 python3 -m venv venv
 source venv/bin/activate
-pip install -r requirements.txt  # Install required packages
+python3 -m pip install -r requirements.txt  # Install required packages
 ```
 In order to run the demo scripts you need to install the face detector
 
