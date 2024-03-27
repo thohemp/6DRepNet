@@ -11,7 +11,18 @@
 ## **Citing**
 
 If you find our work useful, please cite the paper:
-
+```BibTeX
+@ARTICLE{10477888,
+  author={Hempel, Thorsten and Abdelrahman, Ahmed A. and Al-Hamadi, Ayoub},
+  journal={IEEE Transactions on Image Processing}, 
+  title={Toward Robust and Unconstrained Full Range of Rotation Head Pose Estimation}, 
+  year={2024},
+  volume={33},
+  number={},
+  pages={2377-2387},
+  keywords={Head;Training;Predictive models;Pose estimation;Quaternions;Three-dimensional displays;Training data;Head pose estimation;full range of rotation;rotation matrix;6D representation;geodesic loss},
+  doi={10.1109/TIP.2024.3378180}}
+```
 ```BibTeX
 @INPROCEEDINGS{9897219,
   author={Hempel, Thorsten and Abdelrahman, Ahmed A. and Al-Hamadi, Ayoub},
